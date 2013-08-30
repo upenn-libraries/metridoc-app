@@ -18,5 +18,10 @@ cd metridoc-template-app
 ```
 
 You should see a simple home page listing installed applications (which there are none).  You can log in as admin with
-user name `admin` and password `password` to see the admin components.
+user name `admin` and password `password` to see the admin components.  At this point the application is running on an
+in memory database, so any changes you make will be lost upon a restart.
+
+
+
+
 
