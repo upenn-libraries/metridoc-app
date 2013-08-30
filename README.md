@@ -1,4 +1,4 @@
 metridoc-template-app
 =====================
 
-a template to use to run and use metridoc view templates
+a template for running a metridoc grails app.  
