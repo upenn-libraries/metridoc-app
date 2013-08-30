@@ -1,9 +1,9 @@
 This is a basic template / container for the view layer of metridoc.  All of the metridoc projects are grails plugins
-and this application represents starting point to use these components.  This is meant to be a template for institutions to 
-run any of the MetriDoc view components.  Although this readme should help you get started, more details about various 
-MetriDoc software are available at the MetriDoc [wiki](https://github.com/metridoc/metridoc-wiki/wiki).  For the most part,
-MetriDoc is an api / scripting tool to migrate data and the view part is an optional component to view / download that 
-data.  If you want to use any of the view components that have been created for MetriDoc, this is the place to start.
+and this application represents starting point to use these components.  Although this readme should help you get started, 
+more details about variousMetriDoc software are available at the MetriDoc [wiki](https://github.com/metridoc/metridoc-wiki/wiki).  
+For the most part, MetriDoc is an api / scripting tool to migrate data and the view part is an optional component to 
+view / download thatdata.  If you want to use any of the view components that have been created for MetriDoc, this is the 
+place to start.
 
 #### Getting Started
 
