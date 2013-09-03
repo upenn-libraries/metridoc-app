@@ -1,19 +1,32 @@
 import org.apache.commons.lang.SystemUtils
+import org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext
 import org.slf4j.LoggerFactory
 
 def rootLoader = Thread.currentThread().contextClassLoader.rootLoader
 
 def driverDirectory = new File("${SystemUtils.USER_HOME}/.grails/drivers")
-if (driverDirectory.exists() && driverDirectory.isDirectory()) {
-    if (rootLoader) {
-        driverDirectory.eachFile {
-            if (it.name.endsWith(".jar")) {
-                def url = it.toURI().toURL()
-                LoggerFactory.getLogger("config.Config").info "adding driver ${url}" as String
-                rootLoader.addURL(url)
-            }
+log.info "searching $driverDirectory for drivers"
+
+def existsAndIsDirectory = driverDirectory.exists() && driverDirectory.isDirectory()
+
+if (existsAndIsDirectory) {
+    log.info "$driverDirectory exists, checking for drivers"
+    if (rootLoader == null) {
+        rootLoader = GrailsWebApplicationContext.class.classLoader
+    }
+    driverDirectory.listFiles().each {
+        if (it.name.endsWith(".jar")) {
+            def url = it.toURI().toURL()
+            LoggerFactory.getLogger("config.Config").info "adding driver ${url}" as String
+            rootLoader.addURL(url)
+        }
+        else {
+            log.info "$it is not a driver"
         }
     }
+}
+else {
+    log.info "$driverDirectory does not exists or is not a directory"
 }
 
 grails.converters.default.pretty.print = true
@@ -47,7 +60,7 @@ grails.scaffolding.templates.domainSuffix = 'Instance'
 grails.json.legacy.builder = false
 grails.enable.native2ascii = true
 grails.spring.bean.packages = []
-grails.web.disable.multipart=false
+grails.web.disable.multipart = false
 grails.exceptionresolver.params.exclude = ['password']
 grails.hibernate.cache.queries = false
 
