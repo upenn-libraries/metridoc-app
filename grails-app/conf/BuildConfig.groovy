@@ -21,12 +21,18 @@ grails.project.dependency.resolution = {
         mavenRepo "http://dl.bintray.com/upennlib/metridoc"
         mavenRepo "http://dl.bintray.com/upennlib/maven"
         mavenRepo "http://jcenter.bintray.com/"
+        mavenRepo "https://metridoc.googlecode.com/svn/maven/repository"
     }
 
     plugins {
         //add other plugins here, ie
-        compile ":metridoc-illiad:0.3.4"
-        compile ":metridoc-core:0.7.1"
+        compile ":metridoc-core:0.7.2"
+        compile (":metridoc-counter:0.3") {
+            excludes "metridoc-core"
+        }
+        compile (":metridoc-illiad:0.3.5") {
+            excludes "metridoc-core"
+        }
         build ":tomcat:$grailsVersion"
         build ":squeaky-clean:0.1.1"
     }
