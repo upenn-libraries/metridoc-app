@@ -25,7 +25,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         //add other plugins here, ie
-        //compile ":metridoc-illiad:0.3.4"
+        compile ":metridoc-illiad:0.3.4"
         compile ":metridoc-core:0.7.1"
         build ":tomcat:$grailsVersion"
         build ":squeaky-clean:0.1.1"
