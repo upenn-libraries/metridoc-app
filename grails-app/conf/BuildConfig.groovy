@@ -18,6 +18,7 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         grailsCentral()
+        mavenLocal()
         mavenCentral()
         mavenRepo "http://dl.bintray.com/upennlib/metridoc"
         mavenRepo "http://dl.bintray.com/upennlib/maven"
@@ -27,7 +28,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         //add other plugins here, ie
-        compile ":metridoc-core:0.7.5"
+        compile ":metridoc-core:0.7.6"
         compile (":metridoc-counter:0.3") {
             excludes "metridoc-core"
         }

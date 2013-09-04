@@ -2,7 +2,7 @@ import org.apache.commons.lang.SystemUtils
 import org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext
 import org.slf4j.LoggerFactory
 
-def rootLoader = Thread.currentThread().contextClassLoader.rootLoader
+def rootLoader = rootLoader = GrailsWebApplicationContext.class.classLoader
 
 def driverDirectory = new File("${SystemUtils.USER_HOME}/.grails/drivers")
 log.info "searching $driverDirectory for drivers"
@@ -11,9 +11,6 @@ def existsAndIsDirectory = driverDirectory.exists() && driverDirectory.isDirecto
 
 if (existsAndIsDirectory) {
     log.info "$driverDirectory exists, checking for drivers"
-    if (rootLoader == null) {
-        rootLoader = GrailsWebApplicationContext.class.classLoader
-    }
     driverDirectory.listFiles().each {
         if (it.name.endsWith(".jar")) {
             def url = it.toURI().toURL()
