@@ -34,6 +34,9 @@ grails.project.dependency.resolution = {
         compile (":metridoc-illiad:0.3.5") {
             excludes "metridoc-core"
         }
+        compile (":metridoc-rid:0.2.0") {
+            excludes "metridoc-core"
+        }
         build ":tomcat:$grailsVersion"
         build ":squeaky-clean:0.1.1"
     }
