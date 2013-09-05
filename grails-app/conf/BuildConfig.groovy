@@ -35,7 +35,7 @@ grails.project.dependency.resolution = {
         compile (":metridoc-illiad:0.3.5") {
             excludes "metridoc-core"
         }
-        compile (":metridoc-rid:0.3.1") {
+        compile (":metridoc-rid:0.3.2") {
             excludes "metridoc-core"
         }
         compile ":google-visualization:0.6.2"
