@@ -28,7 +28,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         //add other plugins here, ie
-        compile ":metridoc-core:0.7.6"
+        compile ":metridoc-core:0.7.7"
         compile (":metridoc-counter:0.3") {
             excludes "metridoc-core"
         }
