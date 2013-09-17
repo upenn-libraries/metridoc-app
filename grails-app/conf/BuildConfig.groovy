@@ -32,7 +32,7 @@ grails.project.dependency.resolution = {
         compile (":metridoc-counter:0.3") {
             excludes "metridoc-core"
         }
-        compile (":metridoc-illiad:0.4.1") {
+        compile (":metridoc-illiad:0.4.2") {
             excludes "metridoc-core"
         }
         compile (":metridoc-rid:0.3.3") {
