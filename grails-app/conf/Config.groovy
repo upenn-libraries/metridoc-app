@@ -125,3 +125,25 @@ log4j = {
         info 'stdout', 'file'
     }
 }
+
+/**
+ * webdav directory for COUNTER spreadsheets
+ */
+grails.webdav =  [
+        cdav: [
+            url: '/cdav/*',
+                init: [
+                        rootpath: "${System.properties.'user.home'}/.metridoc/counter",
+                        storeDebug: 1,
+                        'no-content-length-headers': 0,
+                        lazyFolderCreationOnPut: 0
+                ]
+        ]
+]
+
+/**
+ * auth for counter webdav
+ */
+security.shiro.filter.filterChainDefinitions = """/cdav = authcBasic,roles[ROLE_SUPER_USER]
+/cdav/** = authcBasic,roles[ROLE_SUPER_USER]
+"""

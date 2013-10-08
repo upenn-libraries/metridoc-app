@@ -28,4 +28,6 @@ class UrlMappings {
 
         "500"(view: '/error')
     }
+
+    static excludes = ['/cdav*']
 }
