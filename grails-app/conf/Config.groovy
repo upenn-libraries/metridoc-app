@@ -133,7 +133,7 @@ grails.webdav =  [
         cdav: [
             url: '/cdav/*',
                 init: [
-                        rootpath: "${SystemUtils.USER_HOME}/.metridoc/counter",
+                        rootpath: "${metridoc.home}/counter",
                         storeDebug: 1,
                         'no-content-length-headers': 0,
                         lazyFolderCreationOnPut: 0
