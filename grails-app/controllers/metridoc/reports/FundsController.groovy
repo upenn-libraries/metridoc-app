@@ -7,7 +7,7 @@ class FundsController {
     static homePage = [
             title: "Voyager Fund",
             description: """
-                Expenditure activity during specified ledger and by materials allocation or vendor.
+                Expenditure activity during specified ledger and by materials allocation or vendor
             """
     ]
 

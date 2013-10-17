@@ -7,7 +7,7 @@ class BorrowDirectController {
     static homePage = [
             title: "Borrow Direct Data Repository",
             description: """
-                ILL activity within the Borrow Direct consortium.
+                ILL activity within the Borrow Direct consortium
             """
     ]
 

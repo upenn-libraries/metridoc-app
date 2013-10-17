@@ -7,7 +7,7 @@ class EzBorrowController {
     static homePage = [
             title: "EzBorrow Data Repository",
             description: """
-                ILL activity within the EZBorrow consortium.
+                ILL activity within the EZBorrow consortium
             """
     ]
 
