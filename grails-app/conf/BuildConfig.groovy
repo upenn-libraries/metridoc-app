@@ -18,7 +18,9 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         grailsCentral()
-        mavenLocal()
+        if (System.getProperty("grails.env") != "production") {
+            mavenLocal()
+        }
         mavenCentral()
         mavenRepo "http://dl.bintray.com/upennlib/metridoc"
         mavenRepo "http://dl.bintray.com/upennlib/maven"
@@ -27,20 +29,38 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        //add other plugins here, ie
-        compile ":metridoc-core:0.7.7"
+
+        if (System.getProperty("grails.env") != "production") {
+            String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
+            compile ":metridoc-core:${metridocVersion}"
+            compile (":metridoc-illiad:${metridocVersion}") {
+                excludes "metridoc-core"
+            }
+            compile (":metridoc-rid:${metridocVersion}") {
+                excludes "metridoc-core"
+            }
+        }
+        else {
+            def getVersion = {String module ->
+                def metadata = new XmlSlurper().parse("http://dl.bintray.com/upennlib/metridoc/org/grails/plugins/${module}/maven-metadata.xml")
+                return metadata.versioning.latest.text()
+            }
+            compile ":metridoc-core:${getVersion('metridoc-core')}"
+            compile(":metridoc-illiad:${getVersion('metridoc-illiad')}") {
+                excludes "metridoc-core"
+            }
+            compile(":metridoc-rid:${getVersion('metridoc-rid')}") {
+                excludes "metridoc-core"
+            }
+        }
+
         compile (":metridoc-counter:0.3") {
             excludes "metridoc-core"
         }
-        compile (":metridoc-illiad:0.4.2") {
-            excludes "metridoc-core"
-        }
-        compile (":metridoc-rid:0.3.3") {
-            excludes "metridoc-core"
-        }
+
         compile ":webdav:0.3.1"
         compile ":google-visualization:0.6.2"
         build ":tomcat:$grailsVersion"
-        build ":squeaky-clean:0.1.1"
+        build ":squeaky-clean:0.2"
     }
 }
