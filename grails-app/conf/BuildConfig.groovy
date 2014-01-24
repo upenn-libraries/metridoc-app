@@ -44,22 +44,14 @@ grails.project.dependency.resolution = {
         mavenRepo "https://metridoc.googlecode.com/svn/maven/repository"
     }
 
-    dependencies {
-        //don't know why I have to have this, grails has troubles iporting it unless I explicitly add it
-        test "org.springframework:spring-test:3.2.5.RELEASE"
-    }
-
     plugins {
 
         if (System.getProperty("grails.env") != "production") {
             String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
             compile ":metridoc-core:${metridocVersion}"
-            compile (":metridoc-illiad:${metridocVersion}") {
-                excludes "metridoc-core"
-            }
-            compile (":metridoc-rid:${metridocVersion}") {
-                excludes "metridoc-core"
-            }
+            compile (":metridoc-illiad:${metridocVersion}")
+            compile (":metridoc-rid:${metridocVersion}")
+            compile (":metridoc-bd:${metridocVersion}")
         }
         else {
             def getVersion = {String module ->
@@ -67,12 +59,9 @@ grails.project.dependency.resolution = {
                 return metadata.versioning.latest.text()
             }
             compile ":metridoc-core:${getVersion('metridoc-core')}"
-            compile(":metridoc-illiad:${getVersion('metridoc-illiad')}") {
-                excludes "metridoc-core"
-            }
-            compile(":metridoc-rid:${getVersion('metridoc-rid')}") {
-                excludes "metridoc-core"
-            }
+            compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
+            compile(":metridoc-rid:${getVersion('metridoc-rid')}")
+            compile(":metridoc-bd:${getVersion('metridoc-bd')}")
         }
 
         compile (":metridoc-counter:0.4") {
