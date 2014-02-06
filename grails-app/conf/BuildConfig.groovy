@@ -47,6 +47,7 @@ grails.project.dependency.resolution = {
     plugins {
 
         if (System.getProperty("grails.env") != "production") {
+            println "using development dependencies"
             String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
             compile ":metridoc-core:${metridocVersion}"
             compile (":metridoc-illiad:${metridocVersion}")
@@ -54,6 +55,7 @@ grails.project.dependency.resolution = {
             compile (":metridoc-bd:${metridocVersion}")
         }
         else {
+            println "using production dependencies"
             def getVersion = {String module ->
                 def metadata = new XmlSlurper().parse("http://dl.bintray.com/upennlib/metridoc/org/grails/plugins/${module}/maven-metadata.xml")
                 return metadata.versioning.latest.text()
@@ -61,7 +63,7 @@ grails.project.dependency.resolution = {
             compile ":metridoc-core:${getVersion('metridoc-core')}"
             compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
-//            compile(":metridoc-bd:${getVersion('metridoc-bd')}")
+            compile(":metridoc-bd:${getVersion('metridoc-bd')}")
         }
 
         compile (":metridoc-counter:0.4") {
