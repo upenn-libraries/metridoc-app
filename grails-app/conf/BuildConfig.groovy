@@ -67,7 +67,7 @@ grails.project.dependency.resolution = {
         compile (":metridoc-counter:0.4") {
             excludes "metridoc-core"
         }
-
+        runtime ":hibernate:3.6.10.6"
         compile ":google-visualization:0.6.2"
         build ":tomcat:7.0.47"
         build ":squeaky-clean:0.2"
