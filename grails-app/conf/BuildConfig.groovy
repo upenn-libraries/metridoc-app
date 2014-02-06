@@ -61,7 +61,7 @@ grails.project.dependency.resolution = {
             compile ":metridoc-core:${getVersion('metridoc-core')}"
             compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
-            compile(":metridoc-bd:${getVersion('metridoc-bd')}")
+//            compile(":metridoc-bd:${getVersion('metridoc-bd')}")
         }
 
         compile (":metridoc-counter:0.4") {
