@@ -11,7 +11,7 @@ class FundsController {
             """
     ]
 
-    def index() {
-        redirect(url: "http://metridocstaff.library.upenn.edu/metridoc-penn-funds/")
-    }
+    //def index() {
+    //   redirect(url: "http://metridocstaff.library.upenn.edu/metridoc-penn-funds/")
+    //}
 }
