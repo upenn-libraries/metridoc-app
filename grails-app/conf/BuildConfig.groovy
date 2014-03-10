@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
             compile (":metridoc-illiad:${metridocVersion}")
             compile (":metridoc-rid:${metridocVersion}")
             compile (":metridoc-bd:${metridocVersion}")
+            compile (":metridoc-funds:${metridocVersion}")
         }
         else {
             println "using production dependencies"
@@ -64,6 +65,7 @@ grails.project.dependency.resolution = {
             compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
             compile(":metridoc-bd:${getVersion('metridoc-bd')}")
+            compile(":metridoc-funds:${getVersion('metridoc-bd')}")
         }
 
         compile (":metridoc-counter:0.4") {
