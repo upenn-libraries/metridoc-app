@@ -45,8 +45,15 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
+        println "using development dependencies"
+        String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
+        compile ":metridoc-core:${metridocVersion}"
+        compile (":metridoc-illiad:${metridocVersion}")
+        compile (":metridoc-rid:${metridocVersion}")
+        compile (":metridoc-bd:${metridocVersion}")
+        compile (":metridoc-funds:${metridocVersion}")
 
-        if (System.getProperty("grails.env") != "production") {
+        /*if (System.getProperty("grails.env") != "production") {
             println "using development dependencies"
             String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
             compile ":metridoc-core:${metridocVersion}"
@@ -66,7 +73,7 @@ grails.project.dependency.resolution = {
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
             compile(":metridoc-bd:${getVersion('metridoc-bd')}")
             compile(":metridoc-funds:${getVersion('metridoc-bd')}")
-        }
+        }*/
 
         compile (":metridoc-counter:0.4") {
             excludes "metridoc-core"
