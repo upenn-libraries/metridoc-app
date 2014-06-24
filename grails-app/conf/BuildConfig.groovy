@@ -34,14 +34,19 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         grailsCentral()
+
         if (System.getProperty("grails.env") != "production") {
             mavenLocal()
         }
+
+
         mavenCentral()
         mavenRepo "http://dl.bintray.com/upennlib/metridoc"
         mavenRepo "http://dl.bintray.com/upennlib/maven"
         mavenRepo "http://jcenter.bintray.com/"
         mavenRepo "https://metridoc.googlecode.com/svn/maven/repository"
+        //Temporarily allow production mavenLocal() because counter 0.5 is having trouble with bintray
+        //mavenLocal()
     }
 
     plugins {/*
@@ -75,7 +80,7 @@ grails.project.dependency.resolution = {
             compile(":metridoc-funds:${getVersion('metridoc-bd')}")
         }
 
-        compile (":metridoc-counter:0.4") {
+        compile (":metridoc-counter:0.5") {
             excludes "metridoc-core"
         }
         runtime ":hibernate:3.6.10.6"
