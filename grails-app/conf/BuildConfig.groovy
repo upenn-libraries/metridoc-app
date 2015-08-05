@@ -80,7 +80,7 @@ grails.project.dependency.resolution = {
             compile(":metridoc-funds:${getVersion('metridoc-bd')}")
         }
 
-        compile (":metridoc-counter:0.5") {
+        compile (":metridoc-counter:0.6") {
             excludes "metridoc-core"
         }
         runtime ":hibernate:3.6.10.6"
