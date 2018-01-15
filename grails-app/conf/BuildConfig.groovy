@@ -47,6 +47,9 @@ grails.project.dependency.resolution = {
         mavenRepo "https://metridoc.googlecode.com/svn/maven/repository"
         //Temporarily allow production mavenLocal() because counter 0.5 is having trouble with bintray
         //mavenLocal()
+        dependencies {
+    	  test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+        }
     }
 
     plugins {/*
@@ -58,6 +61,10 @@ grails.project.dependency.resolution = {
         compile (":metridoc-bd:${metridocVersion}")
         compile (":metridoc-funds:${metridocVersion}")*/
 
+        test(":spock:0.7") {
+          exclude "spock-grails-support"
+        }
+
         if (System.getProperty("grails.env") != "production") {
             println "using development dependencies"
             String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
@@ -66,6 +73,7 @@ grails.project.dependency.resolution = {
             compile (":metridoc-rid:${metridocVersion}")
             compile (":metridoc-bd:${metridocVersion}")
             compile (":metridoc-funds:${metridocVersion}")
+            compile (":metridoc-gate:${metridocVersion}")
         }
         else {
             println "using production dependencies"
@@ -77,7 +85,8 @@ grails.project.dependency.resolution = {
             compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
             compile(":metridoc-bd:${getVersion('metridoc-bd')}")
-            compile(":metridoc-funds:${getVersion('metridoc-bd')}")
+            compile(":metridoc-funds:${getVersion('metridoc-funds')}")
+            compile(":metridoc-gate:${getVersion('metridoc-gate')}")
         }
 
         compile (":metridoc-counter:0.6") {
