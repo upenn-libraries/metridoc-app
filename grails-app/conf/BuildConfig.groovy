@@ -41,32 +41,30 @@ grails.project.dependency.resolution = {
 
 
         mavenCentral()
+        mavenRepo "http://repo.grails.org/grails/core"
+        mavenRepo "http://repo.grails.org/grails/plugins"
+
         mavenRepo "http://dl.bintray.com/upennlib/metridoc"
         mavenRepo "http://dl.bintray.com/upennlib/maven"
         mavenRepo "http://jcenter.bintray.com/"
         mavenRepo "https://metridoc.googlecode.com/svn/maven/repository"
         //Temporarily allow production mavenLocal() because counter 0.5 is having trouble with bintray
         //mavenLocal()
-        dependencies {
-    	  test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
-        }
     }
 
     plugins {/*
         println "using development dependencies"
         String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
+        compile ":release:3.1.2"
         compile ":metridoc-core:${metridocVersion}"
         compile (":metridoc-illiad:${metridocVersion}")
         compile (":metridoc-rid:${metridocVersion}")
         compile (":metridoc-bd:${metridocVersion}")
         compile (":metridoc-funds:${metridocVersion}")*/
 
-        test(":spock:0.7") {
-          exclude "spock-grails-support"
-        }
-
         if (System.getProperty("grails.env") != "production") {
             println "using development dependencies"
+            compile ":release:3.1.2"
             String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
             compile ":metridoc-core:${metridocVersion}"
             compile (":metridoc-illiad:${metridocVersion}")
@@ -80,7 +78,8 @@ grails.project.dependency.resolution = {
             def getVersion = {String module ->
                 def metadata = new XmlSlurper().parse("http://dl.bintray.com/upennlib/metridoc/org/grails/plugins/${module}/maven-metadata.xml")
                 return metadata.versioning.latest.text()
-            }
+            } 
+            compile ":release:3.1.2"
             compile ":metridoc-core:${getVersion('metridoc-core')}"
             compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
