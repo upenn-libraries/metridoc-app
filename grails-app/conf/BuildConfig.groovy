@@ -41,6 +41,9 @@ grails.project.dependency.resolution = {
 
 
         mavenCentral()
+        mavenRepo "http://repo.grails.org/grails/core"
+        mavenRepo "http://repo.grails.org/grails/plugins"
+
         mavenRepo "http://dl.bintray.com/upennlib/metridoc"
         mavenRepo "http://dl.bintray.com/upennlib/maven"
         mavenRepo "http://jcenter.bintray.com/"
@@ -52,6 +55,7 @@ grails.project.dependency.resolution = {
     plugins {/*
         println "using development dependencies"
         String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
+        compile ":release:3.1.2"
         compile ":metridoc-core:${metridocVersion}"
         compile (":metridoc-illiad:${metridocVersion}")
         compile (":metridoc-rid:${metridocVersion}")
@@ -60,24 +64,28 @@ grails.project.dependency.resolution = {
 
         if (System.getProperty("grails.env") != "production") {
             println "using development dependencies"
+            compile ":release:3.1.2"
             String metridocVersion = new URL("https://raw.github.com/metridoc/metridoc-grails/master/VERSION").getText().trim()
             compile ":metridoc-core:${metridocVersion}"
             compile (":metridoc-illiad:${metridocVersion}")
             compile (":metridoc-rid:${metridocVersion}")
             compile (":metridoc-bd:${metridocVersion}")
             compile (":metridoc-funds:${metridocVersion}")
+            compile (":metridoc-gate:${metridocVersion}")
         }
         else {
             println "using production dependencies"
             def getVersion = {String module ->
                 def metadata = new XmlSlurper().parse("http://dl.bintray.com/upennlib/metridoc/org/grails/plugins/${module}/maven-metadata.xml")
                 return metadata.versioning.latest.text()
-            }
+            } 
+            compile ":release:3.1.2"
             compile ":metridoc-core:${getVersion('metridoc-core')}"
             compile(":metridoc-illiad:${getVersion('metridoc-illiad')}")
             compile(":metridoc-rid:${getVersion('metridoc-rid')}")
             compile(":metridoc-bd:${getVersion('metridoc-bd')}")
-            compile(":metridoc-funds:${getVersion('metridoc-bd')}")
+            compile(":metridoc-funds:${getVersion('metridoc-funds')}")
+            compile(":metridoc-gate:${getVersion('metridoc-gate')}")
         }
 
         compile (":metridoc-counter:0.6") {
